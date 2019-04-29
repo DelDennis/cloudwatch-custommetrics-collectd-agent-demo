@@ -17,13 +17,18 @@ to map the OS name to PostGres User name by adding entry in pg_indent.conf
 2. In this demo, the OS Name is "root" owning the collectD process and thus the same user needs to be created in PostGres USer table. You may again choose to map it to your own PostGres user in pg_indent.conf
   The below steps to add user "root" and give required permissions to get the metrics from PG -
   a. Create User "root" in PG 
-    CREATE USER root WITH PASSWORD '';
+  
+      CREATE USER root WITH PASSWORD '';
+      
   b. Give permissions to this user to query the Stats table of PG
-    GRANT ALL PRIVILEGES ON <db> TO root;
-  c. Allow the connections created from Local machine to be trusted for testing purpose only. In Production, you will need to     change the auth to MD5 from TRUST.  Go to pg_hba.conf and change the lines to TRUST for local connections for testing         purpose only.
-    local   all             all                                     trust
-    host    all             all             127.0.0.1/32            trust
-    host    all             all             ::1/128                 trust
+  
+     GRANT ALL PRIVILEGES ON <db> TO root;
+  
+  c. Allow the connections created from Local machine to be trusted for testing purpose only. In Production, you will need  to     change the auth to MD5 from TRUST.  Go to pg_hba.conf and change the lines to TRUST for local connections for testing         purpose only.
+  
+      local   all             all                                     trust
+      host    all             all             127.0.0.1/32            trust
+      host    all             all             ::1/128                 trust
 3. Test the connection to PG by "sudo -u root psql template1"  by Connecting with Root user and see if you are able to fire queries against the DB.
 4. Restart PostGresDB service - "sudo systemctl restart postgresql.service"
 5. Restart CollectD Service - "sudo /etc/init.d/collectd restart"
