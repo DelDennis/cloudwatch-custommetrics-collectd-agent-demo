@@ -21,11 +21,8 @@ to map the OS name to PostGres User name by adding entry in pg_indent.conf
   b. Give permissions to this user to query the Stats table of PG
     GRANT ALL PRIVILEGES ON <db> TO root;
   c. Allow the connections created from Local machine to be trusted for testing purpose only. In Production, you will need to     change the auth to MD5 from TRUST.  Go to pg_hba.conf and change the lines to TRUST for local connections for testing         purpose only.
-    # "local" is for Unix domain socket connections only
     local   all             all                                     trust
-    # IPv4 local connections:
     host    all             all             127.0.0.1/32            trust
-    # IPv6 local connections:
     host    all             all             ::1/128                 trust
 3. Test the connection to PG by "sudo -u root psql template1"  by Connecting with Root user and see if you are able to fire queries against the DB.
 4. Restart PostGresDB service - "sudo systemctl restart postgresql.service"
