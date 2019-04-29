@@ -6,6 +6,10 @@ A demo to use custom metrics support on CloudWatch Agent. The demo basically foc
 
 This sample code is made available under a modified MIT license. See the LICENSE file.
 
+## Architecture
+
+
+
 ## Pre-Requisites before running the installation script
 
 In order to get metrics from the PostGresDB, this demo assumes the PostGresDB V 9.2+ is installed on the same machine as CollectD and CloudWatch agent.
